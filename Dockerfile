@@ -1,14 +1,14 @@
-# Use the official Nginx image as a base
+# Use the official Nginx image from Docker Hub
 FROM nginx:alpine
 
-# Set the working directory inside the container
-WORKDIR /usr/share/nginx/e-commerce-project-master
+# Set the working directory inside the container to where Nginx serves files
+WORKDIR /usr/share/nginx/html
 
-# Copy all the files and folders to the nginx web directory
+# Copy all files from the current directory to the container
 COPY . .
 
-# Expose port 80 for HTTP
+# Expose port 80 for HTTP traffic
 EXPOSE 80
 
-# Start Nginx in the foreground
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
